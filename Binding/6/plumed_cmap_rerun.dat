@@ -1,0 +1,82 @@
+# vim: ft=plumed
+
+####################################
+#  >> 1nov native contacts between chains <<
+####################################
+
+
+#generated with gmx editconf -f topol.tpr -o reference.pdb,see https://www.plumed.org/doc-v2.7/user-doc/html/_m_o_l_i_n_f_o.html
+MOLINFO MOLTYPE=protein STRUCTURE=1onv_pbc.pdb
+WHOLEMOLECULES ENTITY0=1-1440
+
+# Define CVs
+
+######Native contacts between chains
+#COM hydrophobyc 
+#M
+hcom493: COM ATOMS=707,710,712,716
+hcom953: COM ATOMS=1304,1307,1309,1313
+#N
+hcom474: COM ATOMS=395,398,400,404
+#hcom953: COM ATOMS=
+#N
+hcom490: COM ATOMS=661,663,667
+#hcom953: COM ATOMS=
+#C
+hcom513: COM ATOMS=1063,1066,1067,1069,1071,1073,1075
+hcom957: COM ATOMS=1363,1366,1368,1372
+#C
+hcom497: COM ATOMS=772,775,777,781
+#hcom957: COM ATOMS=
+#M
+hcom470: COM ATOMS=328,330,334
+#hcom953: COM ATOMS=
+#C
+hcom502: COM ATOMS=867,870,873
+#hcom957: COM ATOMS=
+#N
+hcom478: COM ATOMS=478,481,484,485,486
+hcom949: COM ATOMS=1245,1248,1251,1252
+#N
+hcom489: COM ATOMS=647,649,653
+#hcom949: COM ATOMS=
+#N
+hcom486: COM ATOMS=604,607
+#hcom949: COM ATOMS=
+#C
+hcom501: COM ATOMS=856,859,860,861
+hcom960: COM ATOMS=1408,1411,1413,1417
+
+
+#COM charged
+#C
+ccom498: COM ATOMS=791,794,797,800,803
+ccom956: COM ATOMS=1348,1351,1354,1355,1356
+#N
+ccom471: COM ATOMS=342,345,348,351,354
+ccom947: COM ATOMS=1218,1221,1222,1223
+#C
+#ccom471: COM ATOMS=855,858,859,860
+ccom954: COM ATOMS=1323,1326,1329,1330,1331
+#C
+ccom504: COM ATOMS=899,902,905,908,910,911,914
+ccom958: COM ATOMS=1382,1385,1386,1387
+
+######Flipped contacts between chains
+hcom961: COM ATOMS=1427,1430,1433,1434
+
+ccom510: COM ATOMS=1007,1010,1013,1016,1019
+ccom959: COM ATOMS=1396,1399,1400,1401
+ccom948: COM ATOMS=1230,1233,1236,1237,1238
+ccom945: COM ATOMS=1193,1196,1199,1200,1201
+
+####################################################
+
+cmap_N: CONTACTMAP ATOMS1=hcom493,hcom953 ATOMS2=hcom474,hcom953 ATOMS3=hcom490,hcom953 ATOMS4=hcom513,hcom957 ATOMS5=hcom497,hcom957 ATOMS6=hcom470,hcom953 ATOMS7=hcom502,hcom957 ATOMS8=hcom478,hcom949 ATOMS9=hcom489,hcom949 ATOMS10=hcom486,hcom949 ATOMS11=hcom501,hcom960 ATOMS12=ccom498,ccom956 ATOMS13=ccom471,ccom947 ATOMS14=ccom471,ccom954 ATOMS15=ccom504,ccom958 SWITCH={RATIONAL R_0=0.7 NN=6 MM=8}
+
+cmap_F: CONTACTMAP ATOMS1=hcom474,hcom960 ATOMS2=hcom490,hcom961 ATOMS3=hcom490,hcom960 ATOMS4=hcom490,hcom957 ATOMS5=hcom513,hcom949 ATOMS6=hcom497,hcom953 ATOMS7=hcom513,hcom953 ATOMS8=ccom498,ccom954 ATOMS9=ccom510,ccom959 ATOMS10=ccom504,ccom948 ATOMS11=ccom504,ccom945 ATOMS12=ccom498,ccom947 SWITCH={RATIONAL R_0=0.7 NN=6 MM=8}
+
+# PRINT
+PRINT STRIDE=1 ARG=cmap_N.*,cmap_F.* FILE=COLVAR_CMAP_RERUN
+ENDPLUMED
+

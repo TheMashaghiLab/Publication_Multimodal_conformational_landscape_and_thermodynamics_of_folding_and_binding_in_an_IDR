@@ -1,0 +1,256 @@
+# vim: ft=plumed
+
+####################################
+#  >> 1nov native contacts between chains <<
+####################################
+
+
+#generated with gmx editconf -f topol.tpr -o reference.pdb,see https://www.plumed.org/doc-v2.7/user-doc/html/_m_o_l_i_n_f_o.html
+MOLINFO MOLTYPE=protein STRUCTURE=1onv_pbc.pdb
+WHOLEMOLECULES ENTITY0=1-1440
+
+# Define CVs
+
+ene: ENERGY
+
+#redisues in helical conforamtion
+alpha: ALPHARMSD RESIDUES=941-960 TYPE=DRMSD R_0=0.08 NN=8 MM=12 
+
+
+######Native contacts between chains
+#COM hydrophobyc 
+#M
+hcom493: COM ATOMS=707,710,712,716
+hcom953: COM ATOMS=1304,1307,1309,1313
+#N
+hcom474: COM ATOMS=395,398,400,404
+#hcom953: COM ATOMS=
+#N
+hcom490: COM ATOMS=661,663,667
+#hcom953: COM ATOMS=
+#C
+hcom513: COM ATOMS=1063,1066,1067,1069,1071,1073,1075
+hcom957: COM ATOMS=1363,1366,1368,1372
+#C
+hcom497: COM ATOMS=772,775,777,781
+#hcom957: COM ATOMS=
+#M
+hcom470: COM ATOMS=328,330,334
+#hcom953: COM ATOMS=
+#C
+hcom502: COM ATOMS=867,870,873
+#hcom957: COM ATOMS=
+#N
+hcom478: COM ATOMS=478,481,484,485,486
+hcom949: COM ATOMS=1245,1248,1251,1252
+#N
+hcom489: COM ATOMS=647,649,653
+#hcom949: COM ATOMS=
+#N
+hcom486: COM ATOMS=604,607
+#hcom949: COM ATOMS=
+#C
+hcom501: COM ATOMS=856,859,860,861
+hcom960: COM ATOMS=1408,1411,1413,1417
+
+
+#COM charged
+#C
+ccom498: COM ATOMS=791,794,797,800,803
+ccom956: COM ATOMS=1348,1351,1354,1355,1356
+#N
+ccom471: COM ATOMS=342,345,348,351,354
+ccom947: COM ATOMS=1218,1221,1222,1223
+#C
+#ccom471: COM ATOMS=855,858,859,860
+ccom954: COM ATOMS=1323,1326,1329,1330,1331
+#C
+ccom504: COM ATOMS=899,902,905,908,910,911,914
+ccom958: COM ATOMS=1382,1385,1386,1387
+
+######Flipped contacts between chains
+hcom961: COM ATOMS=1427,1430,1433,1434
+
+ccom510: COM ATOMS=1007,1010,1013,1016,1019
+ccom959: COM ATOMS=1396,1399,1400,1401
+ccom948: COM ATOMS=1230,1233,1236,1237,1238
+ccom945: COM ATOMS=1193,1196,1199,1200,1201
+
+####################################################
+
+
+
+cmap_N: CONTACTMAP ATOMS1=hcom493,hcom953 ATOMS2=hcom474,hcom953 ATOMS3=hcom490,hcom953 ATOMS4=hcom513,hcom957 ATOMS5=hcom497,hcom957 ATOMS6=hcom470,hcom953 ATOMS7=hcom502,hcom957 ATOMS8=hcom478,hcom949 ATOMS9=hcom489,hcom949 ATOMS10=hcom486,hcom949 ATOMS11=hcom501,hcom960 ATOMS12=ccom498,ccom956 ATOMS13=ccom471,ccom947 ATOMS14=ccom471,ccom954 ATOMS15=ccom504,ccom958 SWITCH={RATIONAL R_0=0.7 NN=6 MM=8}
+
+cmap_N_sum: CONTACTMAP ATOMS1=hcom493,hcom953 ATOMS2=hcom474,hcom953 ATOMS3=hcom490,hcom953 ATOMS4=hcom513,hcom957 ATOMS5=hcom497,hcom957 ATOMS6=hcom470,hcom953 ATOMS7=hcom502,hcom957 ATOMS8=hcom478,hcom949 ATOMS9=hcom489,hcom949 ATOMS10=hcom486,hcom949 ATOMS11=hcom501,hcom960 ATOMS12=ccom498,ccom956 ATOMS13=ccom471,ccom947 ATOMS14=ccom471,ccom954 ATOMS15=ccom504,ccom958 SWITCH={RATIONAL R_0=0.7 NN=6 MM=8} WEIGHT=0.066666667 SUM
+
+cmap_F: CONTACTMAP ATOMS1=hcom474,hcom960 ATOMS2=hcom490,hcom961 ATOMS3=hcom490,hcom960 ATOMS4=hcom490,hcom957 ATOMS5=hcom513,hcom949 ATOMS6=hcom497,hcom953 ATOMS7=hcom513,hcom953 ATOMS8=ccom498,ccom954 ATOMS9=ccom510,ccom959 ATOMS10=ccom504,ccom948 ATOMS11=ccom504,ccom945 ATOMS12=ccom498,ccom947 SWITCH={RATIONAL R_0=0.7 NN=6 MM=8}
+
+cmap_F_sum: CONTACTMAP ATOMS1=hcom474,hcom960 ATOMS2=hcom490,hcom961 ATOMS3=hcom490,hcom960 ATOMS4=hcom490,hcom957 ATOMS5=hcom513,hcom949 ATOMS6=hcom497,hcom953 ATOMS7=hcom513,hcom953 ATOMS8=ccom498,ccom954 ATOMS9=ccom510,ccom959 ATOMS10=ccom504,ccom948 ATOMS11=ccom504,ccom945 ATOMS12=ccom498,ccom947 SWITCH={RATIONAL R_0=0.7 NN=6 MM=8} WEIGHT=0.083333333 SUM
+
+
+#Native in helix
+cmap_hel: CONTACTMAP ATOMS1=1188,1227 ATOMS2=1203,1242 ATOMS3=1213,1259 ATOMS4=1225,1269 ATOMS5=1240,1291 ATOMS6=1257,1301 ATOMS7=1267,1320 ATOMS8=1289,1335 ATOMS9=1299,1345 ATOMS10=1318,1360 ATOMS11=1177,1215 ATOMS12=1333,1379 ATOMS13=1343,1393 ATOMS14=1358,1405 SWITCH={RATIONAL R_0=0.3 NN=6 MM=8}
+
+cmap_hel_sum: CONTACTMAP ATOMS1=1188,1227 ATOMS2=1203,1242 ATOMS3=1213,1259 ATOMS4=1225,1269 ATOMS5=1240,1291 ATOMS6=1257,1301 ATOMS7=1267,1320 ATOMS8=1289,1335 ATOMS9=1299,1345 ATOMS10=1318,1360 ATOMS11=1177,1215 ATOMS12=1333,1379 ATOMS13=1343,1393 ATOMS14=1358,1405 SWITCH={RATIONAL R_0=0.3 NN=6 MM=8} WEIGHT=0.071428571 SUM
+
+
+
+##### Orientation CV
+
+axis_bc_a: PROJECTION_ON_AXIS AXIS_ATOMS=876,408 ATOM=1241
+axis_bc_b: PROJECTION_ON_AXIS AXIS_ATOMS=876,408 ATOM=1346
+
+orientation: CUSTOM PERIODIC=NO ARG=axis_bc_a.proj,axis_bc_b.proj VAR=x1,x2 FUNC=(x1-x2)/1.167 #function for excluded region
+#####
+
+
+
+#Distances caluclation
+
+#LDA
+LDA_interchain_: COMBINE ...
+	ARG=cmap_N.contact-1,cmap_N.contact-2,cmap_N.contact-3,cmap_N.contact-4,cmap_N.contact-5,cmap_N.contact-6,cmap_N.contact-7,cmap_N.contact-8,cmap_N.contact-9,cmap_N.contact-10,cmap_N.contact-11,cmap_N.contact-12,cmap_N.contact-13,cmap_N.contact-14,cmap_N.contact-15
+	COEFFICIENTS=-9.34366993e-01,-3.50368560e-01,-1.00288059e-01,-6.09918402e-02,-1.87265045e+00,1.82163047e-01,1.61496189e-01,6.51940762e-04,-2.96269239e-02,-2.16310901e-01,-1.33559167e-01,-9.76838133e-02,5.07080872e-02,2.22770908e-01,-4.87420018e-02
+	PERIODIC=NO 
+...
+LDA_interchain: MATHEVAL ARG=LDA_interchain_ FUNC=x+1.57122872 PERIODIC=NO 
+
+#ARG=ch_1188-1227,ch_1203-1242,ch_1213-1259,ch_1225-1269,ch_1240-1291,ch_1257-1301,ch_1267-1320,ch_1289-1335,ch_1299-1345,ch_1318-1360,ch_1177-1215,ch_1333-1379,ch_1343-1393,ch_1358-1405
+LDA_helix_: COMBINE ...
+	ARG=cmap_hel.contact-1,cmap_hel.contact-2,cmap_hel.contact-3,cmap_hel.contact-4,cmap_hel.contact-5,cmap_hel.contact-6,cmap_hel.contact-7,cmap_hel.contact-8,cmap_hel.contact-9,cmap_hel.contact-10,cmap_hel.contact-11,cmap_hel.contact-12,cmap_hel.contact-13,cmap_hel.contact-14
+	COEFFICIENTS=-0.03301375,-0.01983542,-0.02623858,-0.02077965,-0.57289207,-0.90102654,-1.24053572,-1.06843439,-0.13974423,-0.27285539,0.01730553,0.0315854,-0.05435893,0.06704787
+	PERIODIC=NO 
+...
+LDA_helix: MATHEVAL ARG=LDA_helix_ FUNC=x+2.21475985 PERIODIC=NO
+
+LDA_: COMBINE ...
+	ARG=cmap_N.contact-1,cmap_N.contact-2,cmap_N.contact-3,cmap_N.contact-4,cmap_N.contact-5,cmap_N.contact-6,cmap_N.contact-7,cmap_N.contact-8,cmap_N.contact-9,cmap_N.contact-10,cmap_N.contact-11,cmap_N.contact-12,cmap_N.contact-13,cmap_N.contact-14,cmap_N.contact-15,cmap_hel.contact-1,cmap_hel.contact-2,cmap_hel.contact-3,cmap_hel.contact-4,cmap_hel.contact-5,cmap_hel.contact-6,cmap_hel.contact-7,cmap_hel.contact-8,cmap_hel.contact-9,cmap_hel.contact-10,cmap_hel.contact-11,cmap_hel.contact-12,cmap_hel.contact-13,cmap_hel.contact-14
+	COEFFICIENTS=-1.14208682e+00,-3.98930375e-01,8.86868794e-02,-4.17261410e-02,-2.17217117e+00,-3.86755192e-02,9.30381092e-02,3.09520354e-02,-6.38456063e-02,-2.05108660e-01,-1.36595826e-01,-6.73824131e-02,4.51640005e-02,1.60030809e-01,-1.30744898e-02,-2.99116718e-02,-8.40988068e-02,1.27178202e-02,8.41518859e-03,-5.53964619e-01,-1.26257066e+00,-1.12009503e+00,-1.02817876e+00,-1.52339928e-02,-5.10539154e-01,-1.57022107e-04,1.82539898e-03,1.77398221e-02,-4.54193335e-02
+	PERIODIC=NO 
+...
+LDA: MATHEVAL ARG=LDA_ FUNC=x+4.26085823 PERIODIC=NO
+
+
+##limits on space sampling
+com_ligand: CENTER ATOMS=1180,1191,1206,1216,1228,1243,1260,1270,1292,1302
+com_a: CENTER ATOMS=326,707
+poa_d: PROJECTION_ON_AXIS AXIS_ATOMS=117,com_a ATOM=com_ligand
+
+
+#funnel restraints
+#########################
+### FUNNEL_PARAMETERS ###
+#########################
+wall_width: CONSTANT VALUES=1.8				  # WIDTH (h)
+wall_buffer: CONSTANT VALUES=0.3                          # BUFFER (f, total width = WIDTH + BUFFER)
+beta_cent: CONSTANT VALUES=2.5                            # STEEPNESS
+s_cent: CONSTANT VALUES=3.0                               # INFLEXION
+
+lwall: LOWER_WALLS ARG=poa_d.proj AT=0.5 KAPPA=5000       # Lower Wall 
+uwall: UPPER_WALLS ARG=poa_d.proj AT=4.1 KAPPA=5000       # Upper Wall 
+
+####################################
+########### CALCULATE FUNNEL #######
+# Returns the radius of the funnel
+# at the current value of the cv
+####################################
+MATHEVAL ...
+    LABEL=wall_center
+    ARG=poa_d.proj,s_cent,beta_cent,wall_width,wall_buffer
+    VAR=s,sc,b,h,f
+    FUNC=h*(1./(1.+exp(b*(s-sc))))+f
+    PERIODIC=NO
+... MATHEVAL
+
+################################
+##### POTENTIAL_PARAMETERS #####
+################################
+scaling: CONSTANT VALUES=1.0
+spring: CONSTANT VALUES=10000.0
+
+################################
+####### DEFINE_POTENTIAL #######
+################################
+MATHEVAL ...
+    LABEL=wall_bias
+    ARG=poa_d.ext,spring,wall_center,scaling
+    VAR=z,k,zc,sf
+    FUNC=step(z-zc)*k*(z-zc)*(z-zc)/(sf*sf)
+    PERIODIC=NO
+... MATHEVAL
+finalbias: BIASVALUE ARG=wall_bias
+
+#################################
+######## DEFINE_OPES_EXPLORE ####
+#################################
+
+##limits on CA atoms (helix or elongated) of the receptor
+rmsdINIT: RMSD REFERENCE=CA_restrains.pdb TYPE=OPTIMAL
+UPPER_WALLS ARG=rmsdINIT AT=0.14 KAPPA=20000 EXP=2 OFFSET=0 LABEL=rmsdwallINIT 
+
+## Main alpha RMSD
+main_hel_sum: CONTACTMAP ATOMS1=1188,1227 ATOMS2=1203,1242 ATOMS3=1213,1259 ATOMS4=1225,1269 ATOMS5=1240,1291 ATOMS6=1257,1301 ATOMS7=1267,1320 ATOMS8=1289,1335 ATOMS9=1299,1345 ATOMS10=1318,1360 ATOMS11=1333,1379 ATOMS12=1358,1393 SWITCH={RATIONAL R_0=0.3 NN=6 MM=8} SUM
+#alpha_restraint: RESTRAINT ARG=main_hel_sum AT=12.0 KAPPA=400.0
+
+#CMAP restraints
+cmap_N_sum_: MATHEVAL ARG=cmap_N_sum FUNC=x*15 PERIODIC=NO 
+cmap_F_sum_: MATHEVAL ARG=cmap_F_sum FUNC=x*12 PERIODIC=NO 
+
+LOWER_WALLS ARG=cmap_N_sum_ AT=1.5 KAPPA=10000 EXP=2 OFFSET=0 LABEL=cmap_N_sum_restr
+LOWER_WALLS ARG=cmap_F_sum_ AT=1.2 KAPPA=10000 EXP=2 OFFSET=0 LABEL=cmap_F_sum_restr
+
+xx: CUSTOM PERIODIC=NO ARG=cmap_N_sum_,cmap_F_sum_,poa_d.proj,poa_d.ext,wall_center VAR=n,f,x,z,zc FUNC=step(1.5-n)+step(1.2-f)+step(x-4.15)+step(0.45-x)+step(z-zc*1.02) #function for excluded region
+
+OPES_METAD_EXPLORE ...
+  LABEL=opes1
+  ARG=cmap_N_sum,cmap_F_sum,poa_d.proj
+  FILE=Kernels1.data
+  STATE_RFILE=compressed1.Kernels
+  STATE_WFILE=compressed1.Kernels
+  PACE=100000
+  TEMP=300
+  BARRIER=50
+  SIGMA=0.02,0.02,0.05
+  EXCLUDED_REGION=xx 
+  UPDATE_FROM=0
+  RESTART=NO
+... OPES_METAD_EXPLORE
+
+ecv: ECV_MULTITHERMAL ARG=ene TEMP_MIN=300 TEMP_MAX=373
+opesX: OPES_EXPANDED ARG=ecv.* FILE=DeltaFs.data PACE=1000 UPDATE_FROM=0
+
+OPES_METAD_EXPLORE ...
+  LABEL=opes2
+  ARG=alpha
+  FILE=Kernels2.data
+  STATE_RFILE=compressed2.Kernels
+  STATE_WFILE=compressed2.Kernels
+  PACE=200000
+  TEMP=300
+  BARRIER=5
+  SIGMA=0.015
+  EXCLUDED_REGION=xx 
+  UPDATE_FROM=0
+  RESTART=NO
+... OPES_METAD_EXPLORE
+
+OPES_METAD_EXPLORE ...
+  LABEL=opes3
+  ARG=poa_d.ext
+  FILE=Kernels3.data
+  STATE_RFILE=compressed3.Kernels
+  STATE_WFILE=compressed3.Kernels
+  PACE=200000
+  TEMP=300
+  BARRIER=3
+  SIGMA=0.02
+  EXCLUDED_REGION=xx 
+  UPDATE_FROM=0
+  RESTART=NO
+... OPES_METAD_EXPLORE
+
+# PRINT
+PRINT STRIDE=1000 ARG=opes1.*,opes2.*,opes3.*,opesX.*,ene,alpha,cmap_hel_sum,cmap_N_sum,cmap_F_sum,orientation,poa_d.proj,poa_d.ext,LDA_interchain,LDA_helix,LDA,rmsdINIT,wall_bias,lwall.bias,uwall.bias,rmsdwallINIT.bias,cmap_N_sum_restr.bias,cmap_F_sum_restr.bias FILE=COLVAR
+ENDPLUMED
+

@@ -1,0 +1,16 @@
+;[0 - 17];[0 - 18];[0 - 19];[1 - 9];[1 - 12];[1 - 17];[1 - 18];[2 - 9];[2 - 12];[2 - 14];[2 - 17];[4 - 8];[4 - 9];[13 - 17];[15 - 19]
+[0 - 17];-;CP;CP;P-1;P-1;CP-1;C;P-1;P-1;P-1;CP-1;P-1;P-1;CP-1;C
+[0 - 18];CP-1;-;CP;P-1;P-1;P-1;CP-1;P-1;P-1;P-1;P-1;P-1;P-1;P-1;C
+[0 - 19];CP-1;CP-1;-;P-1;P-1;P-1;P-1;P-1;P-1;P-1;P-1;P-1;P-1;P-1;CP-1
+[1 - 9];P;P;P;-;CP;CP;CP;CP-1;C;C;C;P-1;CP-1;S;S
+[1 - 12];P;P;P;CP-1;-;CP;CP;P-1;CP-1;C;C;P-1;P-1;S;S
+[1 - 17];CP;P;P;CP-1;CP-1;-;CP;P-1;P-1;P-1;CP-1;P-1;P-1;CP-1;C
+[1 - 18];C;CP;P;CP-1;CP-1;CP-1;-;P-1;P-1;P-1;P-1;P-1;P-1;P-1;C
+[2 - 9];P;P;P;CP;P;P;P;-;CP;CP;CP;P-1;CP-1;S;S
+[2 - 12];P;P;P;C;CP;P;P;CP-1;-;CP;CP;P-1;P-1;S;S
+[2 - 14];P;P;P;C;C;P;P;CP-1;CP-1;-;CP;P-1;P-1;C;S
+[2 - 17];CP;P;P;C;C;CP;P;CP-1;CP-1;CP-1;-;P-1;P-1;CP-1;C
+[4 - 8];P;P;P;P;P;P;P;P;P;P;P;-;CP;S;S
+[4 - 9];P;P;P;CP;P;P;P;CP;P;P;P;CP-1;-;S;S
+[13 - 17];CP;P;P;S;S;CP;P;S;S;C;CP;S;S;-;C
+[15 - 19];C;C;CP;S;S;C;C;S;S;S;C;S;S;C;-
